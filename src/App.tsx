@@ -32,6 +32,8 @@ const Site = lazy(() => import("./Components/Site/Site"));
 const Souvenir = lazy(() => import("./Components/Souvenir/Souvenir"));
 const Television = lazy(() => import("./Components/Television/Television"));
 
+const Admin = lazy(() => import("./AdminDashboard/Admin"));
+
 const App = () => {
 	useEffect(() => {
 		document.title = "Business Strategy Project";
@@ -67,6 +69,7 @@ const App = () => {
 							<Route path="/Site" element={<Site />} />
 							<Route path="/Souvenir" element={<Souvenir />} />
 							<Route path="/Television" element={<Television />} />
+							<Route path="/Admin" element={<Admin />} />
 						</Routes>
 					</Suspense>
 
