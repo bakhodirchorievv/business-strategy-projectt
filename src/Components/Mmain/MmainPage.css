@@ -22,6 +22,7 @@ button {
 	max-height: 900px;
 	background-color: black;
 	z-index: -2;
+	margin-top: 50px;
 }
 
 .header {
@@ -89,6 +90,11 @@ button {
 .forBorder {
 	border-bottom: 10px solid white;
 }
+.forBorder:hover {
+	color: rgba(250, 27, 86, 1);
+	border-bottom-color: rgba(250, 27, 86, 1);
+	cursor: pointer;
+}
 
 .head-desc {
 	color: white;
@@ -119,11 +125,11 @@ button {
 	font-size: 19px;
 	line-height: 24.51px;
 }
-.click-item {
+/* .click-item {
 	background-color: rgba(250, 27, 86, 1);
 	border: 1px solid rgba(250, 27, 86, 1);
 	color: rgba(15, 17, 22, 1);
-}
+} */
 
 /* time to start*/
 .timeToWrapper {
@@ -153,6 +159,20 @@ button {
 	line-height: 35px;
 	color: rgba(117, 127, 147, 1);
 	max-width: 630px;
+	white-space: normal;
+	overflow: hidden;
+	display: inline-block;
+	vertical-align: top;
+	animation: cursor 0.75s step-end infinite;
+}
+
+@keyframes cursor {
+	from {
+		border-right-color: rgba(117, 127, 147, 1);
+	}
+	to {
+		border-right-color: transparent;
+	}
 }
 .timeBtn {
 	color: rgba(250, 27, 86, 1);
@@ -163,6 +183,7 @@ button {
 	font-size: 18px;
 	line-height: 23.22px;
 	font-weight: 400;
+	display: block;
 }
 
 .timeRight {
@@ -760,10 +781,6 @@ button {
 	width: 46%;
 }
 
-.zayavku {
-	padding-top: 9px;
-}
-
 .inputs-wrapper {
 	margin-top: 15px;
 	width: 100%;
@@ -883,4 +900,38 @@ button {
 
 .changePlaceB {
 	display: none;
+}
+
+/* Basic fade-in animation */
+.hidden {
+	opacity: 0;
+	transform: translateY(130px);
+	transition: all 1.5s;
+}
+
+.show {
+	opacity: 1;
+	transform: translateY(0);
+}
+
+.fromCenter {
+	opacity: 0;
+	transform: scale(0.5);
+	transition: all 1.2s;
+}
+
+.toCenter {
+	opacity: 1;
+	transform: scale(1);
+}
+
+/* on button hover */
+.hasHover:hover {
+	background-color: rgba(250, 27, 86, 1);
+	border: 1px solid rgba(250, 27, 86, 1);
+	color: rgba(15, 17, 22, 1);
+	transform: scale(1.1);
+}
+button.hasHover {
+	transition: background-color 0.3s ease, transform 0.3s ease;
 }

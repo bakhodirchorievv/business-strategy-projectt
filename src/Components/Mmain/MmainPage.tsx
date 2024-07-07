@@ -1,74 +1,151 @@
 import { Link } from "react-router-dom";
 import "../Mmain/MmainPage.css";
 import "../Mmain/Mmresponsive.css";
+import { useEffect, useRef, useState } from "react";
 
 const MmainPage = () => {
+	// animation start
+	useEffect(() => {
+		const observer = new IntersectionObserver((entries) => {
+			entries.forEach((entry) => {
+				if (entry.isIntersecting) {
+					entry.target.classList.add("show");
+				}
+			});
+		});
+		const observer2 = new IntersectionObserver((entries) => {
+			entries.forEach((entry) => {
+				if (entry.isIntersecting) {
+					entry.target.classList.add("toCenter");
+				}
+			});
+		});
+
+		const hiddenElements = document.querySelectorAll(".hidden");
+		hiddenElements.forEach((el) => observer.observe(el));
+		const fromCenterElements = document.querySelectorAll(".fromCenter");
+		fromCenterElements.forEach((el) => observer2.observe(el));
+
+		return () => {
+			hiddenElements.forEach((el) => observer.unobserve(el));
+			fromCenterElements.forEach((el) => observer2.unobserve(el));
+		};
+	}, []);
+
+	// text animation start
+	const [text, setText] = useState("");
+	const fullText = `The media landscape is changing in front of our eyes, and brands need
+	 to adapt how they communicate in order to thrive. Motion is the connective tissue between
+	  a brand and its audience. It is a vital component of a brand’s platform, evolving
+	   its ecosystem and communications in profound new ways.`;
+	const timeDescRef = useRef<HTMLDivElement>(null);
+
+	useEffect(() => {
+		const observer = new IntersectionObserver((entries) => {
+			entries.forEach((entry) => {
+				if (entry.isIntersecting) {
+					const typeText = () => {
+						for (let i = 0; i < fullText.length; i++) {
+							setTimeout(() => {
+								setText((prev) => prev + fullText[i]);
+							}, i * 10);
+						}
+					};
+					typeText();
+					observer.unobserve(entry.target);
+				}
+			});
+		});
+
+		if (timeDescRef.current) {
+			observer.observe(timeDescRef.current);
+		}
+
+		return () => {
+			if (timeDescRef.current) {
+				observer.unobserve(timeDescRef.current);
+			}
+		};
+	}, []);
+	// animation end
+
 	return (
 		<>
 			<div className="bottomOfHeader">
-				<h1 className="head-title">
-					<span className="forBorder">Стратегия</span>{" "}
-					<span className="forBorder">Креатив</span>{" "}
-					<span className="forBorder">Дизайн </span>
-				</h1>
-
-				<p className="head-desc">
-					Комплексный подход к разработке коммуникаций между брендом и клиентом 
-				</p>
-
-				<img
-					src="/business-strategy-project/MainPage/MmainPage-img.png"
-					alt=""
-					className="mainImage"
-				/>
-				<img
-					src="/business-strategy-project/MainPage/adaptive-headImg.png"
-					alt=""
-					className="adaptiveImg"
-				/>
+				<div className="hidden">
+					<h1 className="head-title hidden">
+						<span className="forBorder">Стратегия</span>{" "}
+						<span className="forBorder">Креатив</span>{" "}
+						<span className="forBorder">Дизайн </span>
+					</h1>
+					<p className="head-desc hidden">
+						Комплексный подход к разработке коммуникаций между брендом и
+						клиентом
+					</p>
+					<img
+						src="/business-strategy-project/MainPage/MmainPage-img.png"
+						alt=""
+						className="mainImage"
+					/>
+					<img
+						src="/business-strategy-project/MainPage/adaptive-headImg.png"
+						alt=""
+						className="adaptiveImg"
+					/>
+				</div>
 			</div>
 
-			<div className="mainPageWrapper">
-				<div className="components-wrapper">
+			<div className="mainPageWrapper hidden">
+				<div className="components-wrapper hidden">
 					<div className="components">
 						<Link to={"Corporate"}>
-							<button className="overallBtn component-item click-item">
+							<button className="overallBtn hasHover component-item click-item">
 								Фирменный стиль →
 							</button>
 						</Link>
 						<Link to={"BrandStrategy"}>
-							<button className="overallBtn component-item">Стратегия →</button>
+							<button className="overallBtn hasHover component-item">
+								Стратегия →
+							</button>
 						</Link>
 						<Link to={"Descriptor"}>
-							<button className="overallBtn component-item">
+							<button className="overallBtn hasHover component-item">
 								Слоган и дескриптор →
 							</button>
 						</Link>
-						<button className="overallBtn component-item">Ребрендинг →</button>
+						<button className="overallBtn hasHover component-item">
+							Ребрендинг →
+						</button>
 
-						<button className="overallBtn component-item">3D →</button>
+						<button className="overallBtn hasHover component-item">3D →</button>
 
 						<Link to={"MDesign"}>
-							<button className="overallBtn component-item">
+							<button className="overallBtn hasHover component-item">
 								Motio design →
 							</button>
 						</Link>
 						<Link to={"Logo"}>
-							<button className="overallBtn component-item">Логотип →</button>
+							<button className="overallBtn hasHover component-item">
+								Логотип →
+							</button>
 						</Link>
 						<Link to={"Naming"}>
-							<button className="overallBtn component-item">Неймиг → </button>
+							<button className="overallBtn hasHover component-item">
+								Неймиг →{" "}
+							</button>
 						</Link>
-						<button className="overallBtn component-item">
+						<button className="overallBtn hasHover component-item">
 							Рекламный креатив →
 						</button>
 						<Link to={"Site"}>
-							<button className="overallBtn component-item">Сайт →</button>
+							<button className="overallBtn hasHover component-item">
+								Сайт →
+							</button>
 						</Link>
 					</div>
 				</div>
 
-				<div className="timeToWrapper">
+				<div className="timeToWrapper hidden">
 					<h2 className="timeToTitle">
 						<span className="yellowSide">time to</span> - это команда
 						экспертов,повседневная практика показывает, что консультация с
@@ -76,30 +153,31 @@ const MmainPage = () => {
 					</h2>
 
 					<div className="timeToBody">
-						<div className="timeLeft">
-							<p className="timeDesc">
-								The media landscape is changing in front of our eyes, and brands
+						<div className="timeLeft hidden">
+							<p ref={timeDescRef} className="timeDesc">
+								{/* The media landscape is changing in front of our eyes, and brands
 								need to adapt how they communicate in order to thrive. Motion is
 								the connective tissue between a brand and its audience. It is a
 								vital component of a brand’s platform, evolving its ecosystem
-								and communications in profound new ways. 
+								and communications in profound new ways. */}
+								{text}
 							</p>
 
-							<button className="overallBtn timeBtn">
+							<button className="overallBtn hasHover timeBtn hidden">
 								время познакомиться →
 							</button>
 						</div>
-						<div className="timeRight">
+						<div className="timeRight hidden">
 							<div className="forOrder">
 								<div className="timerightItem">
 									<p className="numberRight">15+</p>
 									<p className="textRight">Человек в команде</p>
 								</div>
-								<div className="timerightItem ten changePlaceN">
+								<div className="timerightItem ten changePlaceN hidden">
 									<p className="numberRight">30+</p>
 									<p className="textRight">Успешных проектов</p>
 								</div>
-								<div className="timerightItem changePlaceB">
+								<div className="timerightItem changePlaceB hidden">
 									<p className="numberRight">
 										<span className="beSmall">100</span>%
 									</p>
@@ -110,14 +188,14 @@ const MmainPage = () => {
 								<div className="timerightItem">
 									<p className="numberRight">10</p>
 									<p className="textRight textRight10">
-										лет опыта в маркетинге 
+										лет опыта в маркетинге
 									</p>
 								</div>
-								<div className="timerightItem changePlaceN">
+								<div className="timerightItem changePlaceN hidden">
 									<p className="numberRight">100%</p>
 									<p className="textRight">Эффективности</p>
 								</div>
-								<div className="timerightItem ten changePlaceB">
+								<div className="timerightItem ten changePlaceB hidden">
 									<p className="numberRight">30+</p>
 									<p className="textRight">Успешных проектов</p>
 								</div>
@@ -126,10 +204,10 @@ const MmainPage = () => {
 					</div>
 				</div>
 
-				<div className="cases-wrapper">
+				<div className="cases-wrapper hidden">
 					<h2 className="case-title getBlock overallTitle topTitle">Кейсы</h2>
 					<div className="case-left">
-						<div className="left-case-item">
+						<div className="left-case-item fromCenter">
 							<div className="whiteBack"></div>
 							<h3 className="caseTitle">Valor</h3>
 							<p className="case-desc">Ювелирные изделия</p>
@@ -143,7 +221,7 @@ const MmainPage = () => {
 								</Link>
 							</div>
 						</div>
-						<div className="left-case-item">
+						<div className="left-case-item fromCenter">
 							<div className="whiteBack"></div>
 							<h3 className="caseTitle">Valor</h3>
 							<p className="case-desc">Ювелирные изделия</p>
@@ -157,7 +235,7 @@ const MmainPage = () => {
 								</Link>
 							</div>
 						</div>
-						<div className="left-case-item bigger">
+						<div className="left-case-item fromCenter bigger">
 							<div className="whiteBack"></div>
 							<h3 className="caseTitle ">Valor</h3>
 							<p className="case-desc">Ювелирные изделия</p>
@@ -176,7 +254,7 @@ const MmainPage = () => {
 					<div className="case-right">
 						<h2 className="case-title getNone overallTitle">Кейсы</h2>
 
-						<div className="right-case-item bigger getNone">
+						<div className="right-case-item fromCenter bigger getNone">
 							<div className="whiteBackRight"></div>
 							<h3 className="caseTitle alignToRight">Valor</h3>
 							<p className="case-desc alignToRight">
@@ -192,7 +270,7 @@ const MmainPage = () => {
 								</Link>
 							</div>
 						</div>
-						<div className="right-case-item">
+						<div className="right-case-item fromCenter">
 							<div className="whiteBackRight"></div>
 							<h3 className="caseTitle">Valor</h3>
 							<p className="case-desc">Ювелирные изделия</p>
@@ -206,16 +284,18 @@ const MmainPage = () => {
 								</Link>
 							</div>
 						</div>
-						<button className="overallBtn moreCaseBtn ">больше кейсов →</button>
+						<button className="overallBtn hasHover moreCaseBtn hidden">
+							больше кейсов →
+						</button>
 					</div>
 					<img
 						src="/business-strategy-project/MainPage/bckg-layer.png"
 						alt=""
-						className="bckg-layer getNone"
+						className="bckg-layer hidden getNone"
 					/>
 				</div>
 
-				<div className="yellow-wrapper">
+				<div className="yellow-wrapper fromCenter">
 					<div className="yellow-left">
 						<h3 className="yellow-title">
 							Хочешь подобное для своего бизнеса?
@@ -235,110 +315,117 @@ const MmainPage = () => {
 					</div>
 				</div>
 
-				<div className="services-wrapper">
+				<div className="services-wrapper hidden">
 					<h2 className="overallTitle services-title">Услуги</h2>
 
-					<div className="service-item">
-						<div className="service-item-face">
-							<div className="numberWrap">
-								<p className="service-num">01</p>
-								<h4 className="service-name">Стратегия</h4>
+					<div className="hidden">
+						<div className="service-item ">
+							<div className="service-item-face">
+								<div className="numberWrap">
+									<p className="service-num">01</p>
+									<h4 className="service-name">Стратегия</h4>
+								</div>
+								<img
+									src="/business-strategy-project/MainPage/plus-icon.png"
+									alt=""
+									className="plusMinus plus"
+								/>
 							</div>
-							<img
-								src="/business-strategy-project/MainPage/plus-icon.png"
-								alt=""
-								className="plusMinus plus"
-							/>
 						</div>
-					</div>
-					<div className="service-item">
-						<div className="service-item-face">
-							<div className="numberWrap">
-								<p className="service-num">02</p>
-								<h4 className="service-name">Креатив</h4>
+						<div className="service-item ">
+							<div className="service-item-face">
+								<div className="numberWrap">
+									<p className="service-num">02</p>
+									<h4 className="service-name">Креатив</h4>
+								</div>
+								<img
+									src="/business-strategy-project/MainPage/plus-icon.png"
+									alt=""
+									className="plusMinus plus"
+								/>
 							</div>
-							<img
-								src="/business-strategy-project/MainPage/plus-icon.png"
-								alt=""
-								className="plusMinus plus"
-							/>
 						</div>
-					</div>
-					<div className="service-item">
-						<div className="service-item-face">
-							<div className="numberWrap">
-								<p className="service-num">03</p>
-								<h4 className="service-name">Дизайн</h4>
+						<div className="service-item ">
+							<div className="service-item-face">
+								<div className="numberWrap">
+									<p className="service-num">03</p>
+									<h4 className="service-name">Дизайн</h4>
+								</div>
+								<img
+									src="/business-strategy-project/MainPage/minus-icon.png"
+									alt=""
+									className="plusMinus minus"
+								/>
 							</div>
-							<img
-								src="/business-strategy-project/MainPage/minus-icon.png"
-								alt=""
-								className="plusMinus minus"
-							/>
+							<div className="service-info">
+								<p className="service-desc">
+									The media landscape is changing in front of our eyes, and
+									brands need to adapt how they communicate in order to thrive.
+									Motion is the connective tissue between a brand and its
+									audience. It is a vital component of a brand’s platform,
+									evolving its ecosystem and communications in profound new
+									ways.
+								</p>
+								<div className="service-btns">
+									<Link to={"Logo"}>
+										<button className="overallBtn hasHover service-btn">
+											Логотип
+										</button>
+									</Link>
+									<Link to={"Corporate"}>
+										<button className="overallBtn hasHover service-btn">
+											Фирменный стиль
+										</button>
+									</Link>
+									<Link to={"MDesign"}>
+										<button className="overallBtn hasHover service-btn">
+											Motio design
+										</button>
+									</Link>
+									<Link to={"Site"}>
+										<button className="overallBtn hasHover service-btn">
+											Сайт
+										</button>
+									</Link>
+									<Link to={"Guideline"}>
+										<button className="overallBtn hasHover service-btn">
+											Брендбук и гайдлайн
+										</button>
+									</Link>
+									<Link to={"Packing"}>
+										<button className="overallBtn hasHover service-btn">
+											Упаковка
+										</button>
+									</Link>
+									<button className="overallBtn hasHover service-btn">
+										3D
+									</button>
+									<Link to={"Presentation"}>
+										<button className="overallBtn hasHover service-btn">
+											Дизайн презентаций
+										</button>
+									</Link>
+									<button className="overallBtn hasHover service-btn">
+										Дизайн подписка
+									</button>
+								</div>
+							</div>
 						</div>
-
-						<div className="service-info">
-							<p className="service-desc">
-								The media landscape is changing in front of our eyes, and brands
-								need to adapt how they communicate in order to thrive. Motion is
-								the connective tissue between a brand and its audience. It is a
-								vital component of a brand’s platform, evolving its ecosystem
-								and communications in profound new ways. 
+						<div className="service-foot hidden">
+							<p className="service-foot-desc">
+								Про то что мы вообще много всего умеем, просто обращайтесь к нам
+								и мы придумаем как креативно решить вашу задачу. Про то что мы
+								вообще много всего умеем, просто обращайтесь к нам и мы Про то
+								что мы вообще много всего умеем, просто обращайтесь
 							</p>
-
-							<div className="service-btns">
-								<Link to={"Logo"}>
-									<button className="overallBtn service-btn">Логотип</button>
-								</Link>
-								<Link to={"Corporate"}>
-									<button className="overallBtn service-btn">
-										Фирменный стиль
-									</button>
-								</Link>
-								<Link to={"MDesign"}>
-									<button className="overallBtn service-btn">
-										Motio design
-									</button>
-								</Link>
-								<Link to={"Site"}>
-									<button className="overallBtn service-btn">Сайт</button>
-								</Link>
-								<Link to={"Guideline"}>
-									<button className="overallBtn service-btn">
-										Брендбук и гайдлайн
-									</button>
-								</Link>
-								<Link to={"Packing"}>
-									<button className="overallBtn service-btn">Упаковка</button>
-								</Link>
-								<button className="overallBtn service-btn">3D</button>
-								<Link to={"Presentation"}>
-									<button className="overallBtn service-btn">
-										Дизайн презентаций
-									</button>
-								</Link>
-								<button className="overallBtn service-btn">
-									Дизайн подписка
-								</button>
-							</div>
+							<button className="overallBtn hasHover service-foot-btn ">
+								подробнее →
+							</button>
 						</div>
-					</div>
-
-					<div className="service-foot">
-						<p className="service-foot-desc">
-							Про то что мы вообще много всего умеем, просто обращайтесь к нам и
-							мы придумаем как креативно решить вашу задачу. Про то что мы
-							вообще много всего умеем, просто обращайтесь к нам и мы Про то что
-							мы вообще много всего умеем, просто обращайтесь
-						</p>
-
-						<button className="overallBtn service-foot-btn overallBtn">
-							подробнее →
-						</button>
 					</div>
 				</div>
 
-				<div className="packing-wrapper">
+				<div className="packing-wrapper hidden">
 					<div className="packing-head">
 						<h2 className="overallTitle packing-title">Упаковка</h2>
 
@@ -348,7 +435,7 @@ const MmainPage = () => {
 						</p>
 					</div>
 
-					<div className="packing-body">
+					<div className="packing-body hidden">
 						<div className="packing-item">
 							<h3 className="packing-item-title">Дебют</h3>
 							<h3 className="pack-price">150 000 ₽</h3>
@@ -401,41 +488,41 @@ const MmainPage = () => {
 					</div>
 				</div>
 
-				<div className="workWith-wrapper">
+				<div className="workWith-wrapper hidden">
 					<h2 className="overallTitle workWithTitle">Работали с</h2>
 
-					<div className="workWithBody">
+					<div className="workWithBody hidden">
 						<img
 							src="/business-strategy-project/MainPage/screenOfMainImg.png"
 							alt=""
 							className="workWithImg"
 						/>
 						{/* <div className="adaptiveParts">
-							<div className="adapItemWrap">
-								<img
-									src="/business-strategy-project/MainPage/partAdaptive1.png"
-									alt=""
-									className="adaptiveItem"
-								/>
-								<img
-									src="/business-strategy-project/MainPage/partAdaptive2.png"
-									alt=""
-									className="adaptiveItem"
-								/>
-							</div>
-							<div className="adapItemWrap">
-								<img
-									src="/business-strategy-project/MainPage/partAdaptive3.png"
-									alt=""
-									className="adaptiveItem"
-								/>
-								<img
-									src="/business-strategy-project/MainPage/partAdaptive4.png"
-									alt=""
-									className="adaptiveItem"
-								/>
-							</div>
-						</div> */}
+					<div className="adapItemWrap">
+						<img
+							src="/business-strategy-project/MainPage/partAdaptive1.png"
+							alt=""
+							className="adaptiveItem"
+						/>
+						<img
+							src="/business-strategy-project/MainPage/partAdaptive2.png"
+							alt=""
+							className="adaptiveItem"
+						/>
+					</div>
+					<div className="adapItemWrap">
+						<img
+							src="/business-strategy-project/MainPage/partAdaptive3.png"
+							alt=""
+							className="adaptiveItem"
+						/>
+						<img
+							src="/business-strategy-project/MainPage/partAdaptive4.png"
+							alt=""
+							className="adaptiveItem"
+						/>
+					</div>
+				</div> */}
 						<img
 							src="/business-strategy-project/MainPage/ScreenOfAdaptive.png"
 							alt=""
@@ -444,16 +531,18 @@ const MmainPage = () => {
 					</div>
 				</div>
 
-				<div className="review-wrapper">
+				<div className="review-wrapper hidden">
 					<div className="review-head">
 						<h2 className="review-title overallTitle">Отзывы</h2>
 
 						<div>
-							<button className="overallBtn review-btn ">Все отзывы →</button>
+							<button className="overallBtn hasHover review-btn ">
+								Все отзывы →
+							</button>
 						</div>
 					</div>
 
-					<div className="review-body">
+					<div className="review-body hidden">
 						<div className="body-content">
 							<div className="thePerson">
 								<div className="person-left">
@@ -484,10 +573,10 @@ const MmainPage = () => {
 							</p>
 
 							<div className="review-foot">
-								<button className="overallBtn review-btn1 overallBtn">
+								<button className=" review-btn1 hasHover overallBtn hidden">
 									Читать весь отзыв →
 								</button>
-								<button className="overallBtn review-btn2 overallBtn">
+								<button className=" review-btn2 hasHover overallBtn hidden">
 									Кейс →
 								</button>
 							</div>

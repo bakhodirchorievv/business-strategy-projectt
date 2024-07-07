@@ -10,65 +10,77 @@ const Footer = () => {
 					<h2 className="overallTitle footer-title">Время обсудить проект</h2>
 					<div className="footerBtns">
 						<Link to={"Native"}>
-							<button className="overallBtn footerBtn">
+							<button className="overallBtn hasHover footerBtn">
 								Рекламный креатив
 							</button>
 						</Link>
 						<Link to={"Naming"}>
-							<button className="overallBtn footerBtn">Нейминг</button>
+							<button className="overallBtn hasHover footerBtn">Нейминг</button>
 						</Link>
 						<Link to={"Descriptor"}>
-							<button className="overallBtn footerBtn">
+							<button className="overallBtn hasHover footerBtn">
 								Дескриптор, слоган
 							</button>
 						</Link>
 						<Link to={"Presentation"}>
-							<button className="overallBtn footerBtn">Дизайн</button>
+							<button className="overallBtn hasHover footerBtn">Дизайн</button>
 						</Link>
 						<Link to={"Logo"}>
-							<button className="overallBtn footerBtn">Логотип</button>
+							<button className="overallBtn hasHover footerBtn">Логотип</button>
 						</Link>
 						<Link to={"Corporate"}>
-							<button className="overallBtn footerBtn">Фирменный стиль</button>
+							<button className="overallBtn hasHover footerBtn">
+								Фирменный стиль
+							</button>
 						</Link>
 						<Link to={"Site"}>
-							<button className="overallBtn footerBtn">Сайт</button>
+							<button className="overallBtn hasHover footerBtn">Сайт</button>
 						</Link>
 						<Link to={"Guideline"}>
-							<button className="overallBtn footerBtn">
+							<button className="overallBtn hasHover footerBtn">
 								Брендбук и гайдлайн
 							</button>
 						</Link>
 						<Link to={"MDesign"}>
-							<button className="overallBtn footerBtn">Motio design</button>
+							<button className="overallBtn hasHover footerBtn">
+								Motio design
+							</button>
 						</Link>
 						<Link to={"Packing"}>
-							<button className="overallBtn footerBtn">Упаковка</button>
+							<button className="overallBtn hasHover footerBtn">
+								Упаковка
+							</button>
 						</Link>
 
-						<button className="overallBtn footerBtn">3D</button>
+						<button className="overallBtn hasHover footerBtn">3D</button>
 
 						<Link to={"Presentation"}>
-							<button className="overallBtn footerBtn">
+							<button className="overallBtn hasHover footerBtn">
 								Дизайн презентаций
 							</button>
 						</Link>
 
-						<button className="overallBtn footerBtn">Дизайн подписка</button>
+						<button className="overallBtn hasHover footerBtn">
+							Дизайн подписка
+						</button>
 
 						<Link to={"BrandStrategy"}>
-							<button className="overallBtn footerBtn">Стратегия</button>
+							<button className="overallBtn hasHover footerBtn">
+								Стратегия
+							</button>
 						</Link>
 
-						<button className="overallBtn footerBtn">СМИ</button>
+						<button className="overallBtn hasHover footerBtn">СМИ</button>
 
 						<Link to={"Expert"}>
-							<button className="overallBtn footerBtn">
+							<button className="overallBtn hasHover footerBtn">
 								Эксперты мнения и соцсети
 							</button>
 						</Link>
 
-						<button className="overallBtn footerBtn">Выход на рынок РФ</button>
+						<button className="overallBtn hasHover footerBtn">
+							Выход на рынок РФ
+						</button>
 					</div>
 				</div>
 

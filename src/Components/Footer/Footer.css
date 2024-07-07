@@ -178,3 +178,14 @@ button {
 .changePlaceB {
 	display: none;
 }
+
+/* on button hover */
+.hasHover:hover {
+	background-color: rgba(250, 27, 86, 1);
+	border: 1px solid rgba(250, 27, 86, 1);
+	color: rgba(15, 17, 22, 1);
+	transform: scale(1.1);
+}
+button.hasHover {
+	transition: background-color 0.3s ease, transform 0.3s ease;
+}
