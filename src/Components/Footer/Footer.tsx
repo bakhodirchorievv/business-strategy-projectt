@@ -3,6 +3,13 @@ import "../Footer/Footer.css";
 import "../Footer/FooterResponsive.css";
 
 const Footer = () => {
+	const scrollToTop = () => {
+		window.scrollTo({
+			top: 0,
+			behavior: "smooth",
+		});
+	};
+
 	return (
 		<>
 			<footer className="footer">
@@ -135,6 +142,7 @@ const Footer = () => {
 									/>
 								</div>
 								<img
+									onClick={scrollToTop}
 									src="/business-strategy-project/MainPage/arrow-top.png"
 									alt=""
 									className="arrow-top noneAdaptive"
@@ -170,6 +178,7 @@ const Footer = () => {
 									/>
 								</div>
 								<img
+									onClick={scrollToTop}
 									src="/business-strategy-project/MainPage/arrow-top.png"
 									alt=""
 									className="arrow-top"
@@ -194,6 +203,7 @@ const Footer = () => {
 					</div>
 				</div>
 				<img
+					onClick={scrollToTop}
 					src="/business-strategy-project/MainPage/arrow-top.png"
 					alt=""
 					className="arrow-top blockAdaptive"

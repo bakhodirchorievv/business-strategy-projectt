@@ -21,7 +21,7 @@ button {
 	position: relative;
 	max-height: 900px;
 	background-color: black;
-	z-index: -2;
+	z-index: 0;
 	margin-top: 50px;
 }
 
@@ -86,6 +86,7 @@ button {
 	line-height: 210px;
 	letter-spacing: 2%;
 	max-width: 855px;
+	z-index: 1;
 }
 .forBorder {
 	border-bottom: 10px solid white;
@@ -93,7 +94,8 @@ button {
 .forBorder:hover {
 	color: rgba(250, 27, 86, 1);
 	border-bottom-color: rgba(250, 27, 86, 1);
-	cursor: pointer;
+	transition: 0.2s;
+	user-select: none;
 }
 
 .head-desc {
@@ -125,11 +127,6 @@ button {
 	font-size: 19px;
 	line-height: 24.51px;
 }
-/* .click-item {
-	background-color: rgba(250, 27, 86, 1);
-	border: 1px solid rgba(250, 27, 86, 1);
-	color: rgba(15, 17, 22, 1);
-} */
 
 /* time to start*/
 .timeToWrapper {
@@ -885,6 +882,10 @@ button {
 	display: none;
 }
 
+.realBlock {
+	display: block;
+}
+
 .review-btn-b {
 	display: none;
 }
@@ -902,6 +903,17 @@ button {
 	display: none;
 }
 
+/* video control */
+.creativeVideo,
+.designVideo {
+	display: none;
+}
+.getNoneVideo {
+	display: none;
+}
+.realBlock {
+	display: block;
+}
 /* Basic fade-in animation */
 .hidden {
 	opacity: 0;
@@ -934,4 +946,9 @@ button {
 }
 button.hasHover {
 	transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.redBorder {
+	color: rgba(250, 27, 86, 1) !important;
+	border-bottom-color: rgba(250, 27, 86, 1) !important;
 }

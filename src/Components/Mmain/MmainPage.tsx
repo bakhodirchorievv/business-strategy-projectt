@@ -69,23 +69,90 @@ const MmainPage = () => {
 	}, []);
 	// animation end
 
+	const mainImages = document.querySelectorAll(".mainImage");
+	const handleMouseOver = (e: any) => {
+		if (mainImages.length === 0) {
+			console.error("No mainImage elements found");
+			return;
+		}
+
+		mainImages.forEach((video) => {
+			video.classList.remove("realBlock");
+			video.classList.remove("getNoneVideo");
+		});
+
+		if (e.target.classList.contains("creativeHover")) {
+			mainImages[0].classList.add("getNoneVideo");
+			mainImages[1].classList.add("realBlock");
+			mainImages[2].classList.add("getNoneVideo");
+		} else if (e.target.classList.contains("designHover")) {
+			mainImages[0].classList.add("getNoneVideo");
+			mainImages[1].classList.add("getNoneVideo");
+			mainImages[2].classList.add("realBlock");
+		} else if (e.target.classList.contains("mailHover")) {
+			mainImages[0].classList.add("realBlock");
+			mainImages[1].classList.add("getNoneVideo");
+			mainImages[2].classList.add("getNoneVideo");
+		}
+	};
+
+	const handleMouseLeave = () => {
+		mainImages[0].classList.add("realBlock");
+		mainImages[1].classList.remove("realBlock");
+		mainImages[2].classList.remove("realBlock");
+	};
+
 	return (
 		<>
 			<div className="bottomOfHeader">
 				<div className="hidden">
 					<h1 className="head-title hidden">
-						<span className="forBorder">Стратегия</span>{" "}
-						<span className="forBorder">Креатив</span>{" "}
-						<span className="forBorder">Дизайн </span>
+						<span
+							onMouseLeave={handleMouseLeave}
+							onMouseOver={handleMouseOver}
+							className="forBorder mailHover"
+						>
+							Стратегия
+						</span>{" "}
+						<span
+							onMouseLeave={handleMouseLeave}
+							onMouseOver={handleMouseOver}
+							className="forBorder creativeHover"
+						>
+							Креатив
+						</span>{" "}
+						<span
+							onMouseLeave={handleMouseLeave}
+							onMouseOver={handleMouseOver}
+							className="forBorder designHover"
+						>
+							Дизайн 
+						</span>
 					</h1>
 					<p className="head-desc hidden">
 						Комплексный подход к разработке коммуникаций между брендом и
 						клиентом
 					</p>
-					<img
-						src="/business-strategy-project/MainPage/MmainPage-img.png"
-						alt=""
-						className="mainImage"
+					<video
+						src="/business-strategy-project/MainPage/mail.mp4"
+						className="mainImage mailVideo"
+						autoPlay
+						loop
+						muted
+					/>
+					<video
+						src="/business-strategy-project/MainPage/creative.mp4"
+						className="mainImage creativeVideo"
+						autoPlay
+						loop
+						muted
+					/>
+					<video
+						src="/business-strategy-project/MainPage/design.mp4"
+						className="mainImage designVideo"
+						autoPlay
+						loop
+						muted
 					/>
 					<img
 						src="/business-strategy-project/MainPage/adaptive-headImg.png"
