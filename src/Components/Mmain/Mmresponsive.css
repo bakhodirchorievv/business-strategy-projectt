@@ -486,16 +486,19 @@
 	.case-right {
 		width: 100%;
 	}
-	.mainImage {
-		display: none;
+	.bottomOfHeader {
+		height: 800px;
 	}
-	.adaptiveImg {
-		display: block;
-		top: -80px;
+	.mainImage {
+		scale: 1.4;
+		height: 750px;
+		position: relative;
+		top: -150px;
 	}
 
 	.head-desc {
 		left: 20px;
+		bottom: 50px;
 	}
 	.head-title {
 		top: 50%;
@@ -527,13 +530,13 @@
 		width: 229px;
 		height: 131px;
 	}
-	.mainImage {
+	/* .mainImage {
 		display: none;
 	}
 	.adaptiveImg {
 		display: block;
 		top: -80px;
-	}
+	} */
 	.head-desc {
 		left: 20px;
 	}

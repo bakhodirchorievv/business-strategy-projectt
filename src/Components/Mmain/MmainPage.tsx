@@ -154,11 +154,13 @@ const MmainPage = () => {
 						loop
 						muted
 					/>
-					<img
-						src="/business-strategy-project/MainPage/adaptive-headImg.png"
-						alt=""
-						className="adaptiveImg"
-					/>
+					{
+						//<img
+						//	src="/business-strategy-project/MainPage/adaptive-headImg.png"
+						//	alt=""
+						//className="adaptiveImg"
+						///>
+					}
 				</div>
 			</div>
 

@@ -94,7 +94,7 @@ button {
 .forBorder:hover {
 	color: rgba(250, 27, 86, 1);
 	border-bottom-color: rgba(250, 27, 86, 1);
-	transition: 0.2s;
+	transition: 0.5s;
 	user-select: none;
 }
 
@@ -905,12 +905,11 @@ button {
 
 /* video control */
 .creativeVideo,
-.designVideo {
-	display: none;
-}
+.designVideo,
 .getNoneVideo {
 	display: none;
 }
+
 .realBlock {
 	display: block;
 }
