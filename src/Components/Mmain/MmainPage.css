@@ -10,10 +10,38 @@ body {
 	background-color: rgba(15, 17, 22, 1);
 	overflow-x: hidden;
 	position: relative;
+	cursor: none;
 }
 
 button {
 	cursor: pointer;
+}
+
+/* custom curser start */
+.cursor-dot {
+	width: 8px;
+	height: 8px;
+	background-color: white;
+}
+.cursor-outline {
+	width: 40px;
+	height: 40px;
+	background-color: rgba(255, 255, 255, 0.3);
+}
+.cursor-dot,
+.cursor-outline {
+	position: fixed;
+	top: 0;
+	left: 0;
+	transform: translate(-50%, -50%);
+	border-radius: 50%;
+	z-index: 15;
+	pointer-events: none;
+}
+
+.pointer-hover .cursor-outline {
+	width: 70px;
+	height: 70px;
 }
 
 /* header start */
@@ -44,7 +72,6 @@ button {
 	font-size: 15px;
 }
 .list-item {
-	cursor: pointer;
 	font-size: 20px;
 	line-height: 26px;
 }
@@ -947,7 +974,6 @@ button.hasHover {
 	transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-.redBorder {
-	color: rgba(250, 27, 86, 1) !important;
-	border-bottom-color: rgba(250, 27, 86, 1) !important;
+body {
+	cursor: none;
 }

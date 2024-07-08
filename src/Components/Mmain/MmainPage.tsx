@@ -4,6 +4,80 @@ import "../Mmain/Mmresponsive.css";
 import { useEffect, useRef, useState } from "react";
 
 const MmainPage = () => {
+	//  video controol start
+	const mainImages = document.querySelectorAll(".mainImage");
+	const handleMouseOver = (e: any) => {
+		if (mainImages.length === 0) {
+			console.error("No mainImage elements found");
+			return;
+		}
+
+		mainImages.forEach((video) => {
+			video.classList.remove("realBlock");
+			video.classList.remove("getNoneVideo");
+		});
+
+		if (e.target.classList.contains("creativeHover")) {
+			mainImages[0].classList.add("getNoneVideo");
+			mainImages[1].classList.add("realBlock");
+			mainImages[2].classList.add("getNoneVideo");
+		} else if (e.target.classList.contains("designHover")) {
+			mainImages[0].classList.add("getNoneVideo");
+			mainImages[1].classList.add("getNoneVideo");
+			mainImages[2].classList.add("realBlock");
+		} else if (e.target.classList.contains("mailHover")) {
+			mainImages[0].classList.add("realBlock");
+			mainImages[1].classList.add("getNoneVideo");
+			mainImages[2].classList.add("getNoneVideo");
+		}
+	};
+
+	const handleMouseLeave = () => {
+		mainImages[0].classList.add("realBlock");
+		mainImages[1].classList.remove("realBlock");
+		mainImages[2].classList.remove("realBlock");
+	};
+
+	// custom-cursor start
+	useEffect(() => {
+		const cursorDot = document.querySelector(".cursor-dot") as HTMLElement;
+		const cursorOutline = document.querySelector(
+			".cursor-outline"
+		) as HTMLElement;
+		window.addEventListener("mousemove", (e) => {
+			const posX = e.clientX;
+			const posY = e.clientY;
+			cursorDot.style.left = `${posX}px`;
+			cursorDot.style.top = `${posY}px`;
+
+			cursorOutline.style.left = `${posX}px`;
+			cursorOutline.style.top = `${posY}px`;
+
+			cursorOutline?.animate(
+				{
+					left: `${posX}px`,
+					top: `${posY}px`,
+				},
+				{ duration: 500, fill: "forwards" }
+			);
+		});
+	}, []);
+
+	// Add hover effect for pointer elements
+	useEffect(() => {
+		document.querySelectorAll("*").forEach((el) => {
+			el.addEventListener("mouseenter", () => {
+				if (window.getComputedStyle(el).cursor === "pointer") {
+					document.body.classList.add("pointer-hover");
+				}
+			});
+
+			el.addEventListener("mouseleave", () => {
+				document.body.classList.remove("pointer-hover");
+			});
+		});
+	}, []);
+
 	// animation start
 	useEffect(() => {
 		const observer = new IntersectionObserver((entries) => {
@@ -69,41 +143,10 @@ const MmainPage = () => {
 	}, []);
 	// animation end
 
-	const mainImages = document.querySelectorAll(".mainImage");
-	const handleMouseOver = (e: any) => {
-		if (mainImages.length === 0) {
-			console.error("No mainImage elements found");
-			return;
-		}
-
-		mainImages.forEach((video) => {
-			video.classList.remove("realBlock");
-			video.classList.remove("getNoneVideo");
-		});
-
-		if (e.target.classList.contains("creativeHover")) {
-			mainImages[0].classList.add("getNoneVideo");
-			mainImages[1].classList.add("realBlock");
-			mainImages[2].classList.add("getNoneVideo");
-		} else if (e.target.classList.contains("designHover")) {
-			mainImages[0].classList.add("getNoneVideo");
-			mainImages[1].classList.add("getNoneVideo");
-			mainImages[2].classList.add("realBlock");
-		} else if (e.target.classList.contains("mailHover")) {
-			mainImages[0].classList.add("realBlock");
-			mainImages[1].classList.add("getNoneVideo");
-			mainImages[2].classList.add("getNoneVideo");
-		}
-	};
-
-	const handleMouseLeave = () => {
-		mainImages[0].classList.add("realBlock");
-		mainImages[1].classList.remove("realBlock");
-		mainImages[2].classList.remove("realBlock");
-	};
-
 	return (
 		<>
+			<div className="cursor-dot"></div>
+			<div className="cursor-outline"></div>
 			<div className="bottomOfHeader">
 				<div className="hidden">
 					<h1 className="head-title hidden">
