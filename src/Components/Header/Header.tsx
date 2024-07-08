@@ -35,11 +35,13 @@ const Header = () => {
 	return (
 		<>
 			<header id="real-main-header" ref={headerRef} className="header">
-				<img
-					className="head-img"
-					src="/business-strategy-project/MainPage/Vector (4).png"
-					alt=""
-				/>
+				<Link to={"/"}>
+					<img
+						className="head-img"
+						src="/business-strategy-project/MainPage/Vector (4).png"
+						alt=""
+					/>
+				</Link>
 				<ul className="ul-wrapper getNone">
 					<Link to={"Cases"}>
 						<li className="list-item head-case">Кейсы</li>
