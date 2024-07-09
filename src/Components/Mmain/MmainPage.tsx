@@ -143,6 +143,42 @@ const MmainPage = () => {
 	}, []);
 	// animation end
 
+	// service info events start
+	const showServiceInfo = (e: any) => {
+		const target = e.target.parentElement.querySelector(".service-info");
+		const minus = e.target.parentElement.querySelector(".minus");
+		const plus = e.target.parentElement.querySelector(".plus");
+
+		if (target.classList.contains("disappearWithAnimation")) {
+			target.classList.remove("disappearWithAnimation");
+			target.classList.add("appearWithAnimation");
+			minus.classList.remove("disappearWithAnimation");
+			plus.classList.add("disappearWithAnimation");
+		} else {
+			target.classList.add("disappearWithAnimation");
+			target.classList.remove("appearWithAnimation");
+			minus.classList.add("disappearWithAnimation");
+			plus.classList.remove("disappearWithAnimation");
+		}
+	};
+	const showServiceInfo2 = (e: any) => {
+		const target =
+			e.target.parentElement.parentElement.querySelector(".service-info");
+		const minus = e.target.parentElement.parentElement.querySelector(".minus");
+		const plus = e.target.parentElement.parentElement.querySelector(".plus");
+		if (target.classList.contains("disappearWithAnimation")) {
+			target.classList.remove("disappearWithAnimation");
+			target.classList.add("appearWithAnimation");
+			minus.classList.remove("disappearWithAnimation");
+			plus.classList.add("disappearWithAnimation");
+		} else {
+			target.classList.add("disappearWithAnimation");
+			target.classList.remove("appearWithAnimation");
+			minus.classList.add("disappearWithAnimation");
+			plus.classList.remove("disappearWithAnimation");
+		}
+	};
+
 	return (
 		<>
 			<div className="cursor-dot"></div>
@@ -432,44 +468,171 @@ const MmainPage = () => {
 
 					<div className="hidden">
 						<div className="service-item ">
-							<div className="service-item-face">
+							<div onClick={showServiceInfo} className="service-item-face">
 								<div className="numberWrap">
 									<p className="service-num">01</p>
 									<h4 className="service-name">Стратегия</h4>
 								</div>
 								<img
+									onClick={showServiceInfo2}
 									src="/business-strategy-project/MainPage/plus-icon.png"
 									alt=""
 									className="plusMinus plus"
 								/>
+								<img
+									onClick={showServiceInfo2}
+									src="/business-strategy-project/MainPage/minus-icon.png"
+									alt=""
+									className="plusMinus minus disappearWithAnimation"
+								/>
+							</div>
+							<div className="service-info disappearWithAnimation">
+								<p className="service-desc">
+									The media landscape is changing in front of our eyes, and
+									brands need to adapt how they communicate in order to thrive.
+									Motion is the connective tissue between a brand and its
+									audience. It is a vital component of a brand’s platform,
+									evolving its ecosystem and communications in profound new
+									ways.
+								</p>
+								<div className="service-btns">
+									<Link to={"Logo"}>
+										<button className="overallBtn hasHover service-btn">
+											Логотип
+										</button>
+									</Link>
+									<Link to={"Corporate"}>
+										<button className="overallBtn hasHover service-btn">
+											Фирменный стиль
+										</button>
+									</Link>
+									<Link to={"MDesign"}>
+										<button className="overallBtn hasHover service-btn">
+											Motio design
+										</button>
+									</Link>
+									<Link to={"Site"}>
+										<button className="overallBtn hasHover service-btn">
+											Сайт
+										</button>
+									</Link>
+									<Link to={"Guideline"}>
+										<button className="overallBtn hasHover service-btn">
+											Брендбук и гайдлайн
+										</button>
+									</Link>
+									<Link to={"Packing"}>
+										<button className="overallBtn hasHover service-btn">
+											Упаковка
+										</button>
+									</Link>
+									<button className="overallBtn hasHover service-btn">
+										3D
+									</button>
+									<Link to={"Presentation"}>
+										<button className="overallBtn hasHover service-btn">
+											Дизайн презентаций
+										</button>
+									</Link>
+									<button className="overallBtn hasHover service-btn">
+										Дизайн подписка
+									</button>
+								</div>
 							</div>
 						</div>
 						<div className="service-item ">
-							<div className="service-item-face">
+							<div onClick={showServiceInfo} className="service-item-face">
 								<div className="numberWrap">
 									<p className="service-num">02</p>
 									<h4 className="service-name">Креатив</h4>
 								</div>
 								<img
+									onClick={showServiceInfo2}
 									src="/business-strategy-project/MainPage/plus-icon.png"
 									alt=""
 									className="plusMinus plus"
 								/>
+								<img
+									onClick={showServiceInfo2}
+									src="/business-strategy-project/MainPage/minus-icon.png"
+									alt=""
+									className="plusMinus minus disappearWithAnimation"
+								/>
+							</div>
+							<div className="service-info disappearWithAnimation">
+								<p className="service-desc">
+									The media landscape is changing in front of our eyes, and
+									brands need to adapt how they communicate in order to thrive.
+									Motion is the connective tissue between a brand and its
+									audience. It is a vital component of a brand’s platform,
+									evolving its ecosystem and communications in profound new
+									ways.
+								</p>
+								<div className="service-btns">
+									<Link to={"Logo"}>
+										<button className="overallBtn hasHover service-btn">
+											Логотип
+										</button>
+									</Link>
+									<Link to={"Corporate"}>
+										<button className="overallBtn hasHover service-btn">
+											Фирменный стиль
+										</button>
+									</Link>
+									<Link to={"MDesign"}>
+										<button className="overallBtn hasHover service-btn">
+											Motio design
+										</button>
+									</Link>
+									<Link to={"Site"}>
+										<button className="overallBtn hasHover service-btn">
+											Сайт
+										</button>
+									</Link>
+									<Link to={"Guideline"}>
+										<button className="overallBtn hasHover service-btn">
+											Брендбук и гайдлайн
+										</button>
+									</Link>
+									<Link to={"Packing"}>
+										<button className="overallBtn hasHover service-btn">
+											Упаковка
+										</button>
+									</Link>
+									<button className="overallBtn hasHover service-btn">
+										3D
+									</button>
+									<Link to={"Presentation"}>
+										<button className="overallBtn hasHover service-btn">
+											Дизайн презентаций
+										</button>
+									</Link>
+									<button className="overallBtn hasHover service-btn">
+										Дизайн подписка
+									</button>
+								</div>
 							</div>
 						</div>
 						<div className="service-item ">
-							<div className="service-item-face">
+							<div onClick={showServiceInfo} className="service-item-face">
 								<div className="numberWrap">
 									<p className="service-num">03</p>
 									<h4 className="service-name">Дизайн</h4>
 								</div>
 								<img
+									onClick={showServiceInfo2}
+									src="/business-strategy-project/MainPage/plus-icon.png"
+									alt=""
+									className="plusMinus plus"
+								/>
+								<img
+									onClick={showServiceInfo2}
 									src="/business-strategy-project/MainPage/minus-icon.png"
 									alt=""
-									className="plusMinus minus"
+									className="plusMinus minus disappearWithAnimation"
 								/>
 							</div>
-							<div className="service-info">
+							<div className="service-info disappearWithAnimation">
 								<p className="service-desc">
 									The media landscape is changing in front of our eyes, and
 									brands need to adapt how they communicate in order to thrive.

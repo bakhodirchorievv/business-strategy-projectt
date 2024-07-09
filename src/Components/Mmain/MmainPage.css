@@ -449,6 +449,10 @@ button {
 	line-height: 25.8px;
 }
 
+.plusMinus {
+	user-select: none;
+}
+
 .service-info {
 	margin: 54px 0;
 	display: flex;
@@ -928,6 +932,20 @@ button {
 
 .changePlaceB {
 	display: none;
+}
+
+.disappearWithAnimation {
+	display: none;
+	opacity: 0;
+	height: 0;
+	overflow: hidden;
+	transition: opacity 0.5s ease, height 0.5s ease;
+}
+.appearWithAnimation {
+	display: flex;
+	opacity: 1;
+	height: auto;
+	transition: opacity 0.5s ease, height 0.5s ease;
 }
 
 /* video control */
